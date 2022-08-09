@@ -19,7 +19,7 @@ class ProductGroup(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     seq = models.IntegerField()
-    category_id = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
+    category_id = models.ForeignKey(ProductCategory, on_delete=models.PROTECT)
 
     def __str__(self) -> str:
         return str(self.name)
@@ -34,7 +34,7 @@ class Product(models.Model):
     name = models.CharField(max_length=255)
     price = models.FloatField()
     hidden = models.BooleanField()
-    group_id = models.ForeignKey(ProductGroup, on_delete=models.CASCADE)
+    group_id = models.ForeignKey(ProductGroup, on_delete=models.PROTECT)
 
     def __str__(self) -> str:
         return str(self.name)
